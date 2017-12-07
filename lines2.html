@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages' : ['corechart']});
+      google.setOnLoadCallback(desenhaGrafico);
+
+      function desenhaGrafico(){
+        var dados = new google.visualization.DataTable();
+
+        dados.addColumn('date', 'Dia');
+        dados.addColumn('number', 'Conta Corrente');
+        dados.addColumn('number', 'Conta Investimento');
+
+        dados.addRows(6);
+
+        dados.setValue(0, 0, new Date('2017-12-07'));
+        dados.setValue(0, 1, 1500);
+        dados.setValue(0, 2, 450);
+
+        dados.setValue(1, 0, new Date('2017-12-08'));
+        dados.setValue(1, 1, 900);
+        dados.setValue(1, 2, 520);
+
+        dados.setValue(2, 0, new Date('2017-12-09'));
+        dados.setValue(2, 1, 1600);
+        dados.setValue(2, 2, 600);
+
+        dados.setValue(3, 0, new Date('2017-12-10'));
+        dados.setValue(3, 1, 1300);
+        dados.setValue(3, 2, 750);
+
+        dados.setValue(4, 0, new Date('2017-12-11'));
+        dados.setValue(4, 1, 1500);
+        dados.setValue(4, 2, 1100);
+
+        dados.setValue(5, 0, new Date('2017-12-12'));
+        dados.setValue(5, 1, 1420);
+        dados.setValue(5, 2, 1500);
+
+        var formatter = new google.visualization.DateFormat({
+          pattern: 'dd/MM/yyyy',
+        });
+        formatter.format(dados, 0);
+
+
+        var div = document.getElementById('chart_div');
+        var grafico = new google.visualization.LineChart(div);
+
+        grafico.draw(dados, {width: 700, height: 340, title: 'Minhas contas'});
+      }
+    </script>
+  </head>
+  
+  <body>
+      <h1>Saldo das contas</h1>
+      <div id="chart_div"></div>
+   </body>
+</html>

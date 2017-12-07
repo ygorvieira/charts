@@ -8,11 +8,13 @@
 
         function desenhaGrafico(){
           var data = new google.visualization.DataTable();
+          //data.addColumn('tipoDeDado', 'nomeDaColuna');
           data.addColumn('string', 'Mês');
           data.addColumn('number', 'Gastos em R$');
 
           data.addRows(5);
 
+          //data.setValue(linha, coluna, valor);
           data.setValue(0, 0, 'Janeiro');
           data.setValue(0, 1, '2450.0');
 
@@ -29,8 +31,9 @@
           data.setValue(4, 1, '2197.0');
 
           var chart = new google.visualization.LineChart(document.getElementById("chart_div"));
-
-          chart.draw(data, {width: 500, height: 240, title: 'Gastos do mês', colors: ['red']});
+          
+          //chart.draw(fonteDeDados, {largura: px, altura:px, titulo: 'Titulo', cores: ['cor']});
+          chart.draw(data, {width: 500, height: 240, title: 'Gastos do mês', colors: ['red'], curveType: 'function'});
         }
       </script>
     </head>
